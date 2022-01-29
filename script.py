@@ -49,9 +49,10 @@ else:
 
 tries_count = 0
 blanks = list("_"*len(clue))
-
+attempt = 1
+#print("\n{}".format(clue))
 while tries_count <= errors_allowed and blanks != list(clue):
-
+    print("\nAttempt No. {}. You've made {} mistakes.".format(attempt, tries_count))
     guess = input("Input a character: ")
 
     if guess in clue:
@@ -60,3 +61,10 @@ while tries_count <= errors_allowed and blanks != list(clue):
     else:
         print(''.join(blanks))
         tries_count += 1
+
+    attempt += 1
+
+if blanks == list(clue):
+    print("\nCongratulations")
+else:
+    print("\nThe correct word was {}".format(clue))

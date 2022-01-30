@@ -50,17 +50,26 @@ else:
 tries_count = 0
 blanks = list("_"*len(clue))
 attempt = 1
-#print("\n{}".format(clue))
+print("\n{}".format(clue))
 while tries_count <= errors_allowed and blanks != list(clue):
-    print("\nAttempt No. {}. You've made {} mistakes.".format(attempt, tries_count))
+    print("\nAttempt No. {}. You've made {} mistakes so far.".format(attempt, tries_count))
     guess = input("Input a character: ")
+    used_letters = set()
 
-    if guess in clue:
-        blanks[clue.index(guess)] = guess
-        print(''.join(blanks))
-    else:
-        print(''.join(blanks))
+    if guess in used_letters:
+        print("This letter was already used!")
         tries_count += 1
+    else:
+        if guess in clue:
+            blanks = [guess if letter == guess else blank for blank, letter in zip(blanks, clue)]
+            used_letters.add(guess)
+            print("used letters: {}\n".format(used_letters))
+            print(''.join(blanks))
+        else:
+            used_letters.add(guess)
+            print("used letters: {}\n".format(used_letters))
+            print(''.join(blanks))
+            tries_count += 1
 
     attempt += 1
 

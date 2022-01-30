@@ -55,7 +55,7 @@ used_letters = set() # set for storing used characters
 while tries_count <= errors_allowed and blanks != list(clue):
     print("\nAttempt No. {}. Number of mistakes: {}.".format(attempt, tries_count))
 
-    if attempt > 1:
+    if attempt > 1:  # displays the letters that were used
         print("Used letters: {}".format(used_letters))
 
     guess = input("Input a character: ")
